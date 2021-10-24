@@ -14,6 +14,7 @@ import javassist.NotFoundException;
 
 import com.todoapi.todo.repositories.*;
 import com.todoapi.todo.domain.*;
+import com.todoapi.todo.exceptions.TaskNotFoundException;
 
 @RestController
 public class TaskController {
@@ -30,9 +31,9 @@ public class TaskController {
     }
 
     @GetMapping("api/tasks/{id}")
-    public @ResponseBody Task getTask(@PathVariable Integer id) throws NotFoundException {
+    public @ResponseBody Task getTask(@PathVariable Integer id) {
         return taskRepository.findById(id)
-            .orElseThrow(() -> new NotFoundException("Task not found"));
+            .orElseThrow(() -> new TaskNotFoundException(id));
     }
 
     @PostMapping("api/tasks")
