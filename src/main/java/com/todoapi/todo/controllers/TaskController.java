@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.todoapi.todo.repositories.*;
-import com.todoapi.todo.domain.*;
+import com.todoapi.todo.domain.Task;
 import com.todoapi.todo.exceptions.TaskNotFoundException;
 import com.todoapi.todo.exceptions.UserNotFoundException;
 
