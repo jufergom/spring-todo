@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javassist.NotFoundException;
-
 import com.todoapi.todo.repositories.*;
 import com.todoapi.todo.domain.*;
 import com.todoapi.todo.exceptions.TaskNotFoundException;
