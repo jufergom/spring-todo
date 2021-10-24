@@ -14,6 +14,7 @@ import javassist.NotFoundException;
 
 import com.todoapi.todo.repositories.*;
 import com.todoapi.todo.domain.*;
+import com.todoapi.todo.exceptions.UserNotFoundException;
 
 @RestController
 public class UserController {
@@ -30,9 +31,9 @@ public class UserController {
     }
 
     @GetMapping("api/users/{id}")
-    public @ResponseBody User getUser(@PathVariable Integer id) throws NotFoundException {
+    public @ResponseBody User getUser(@PathVariable Integer id) {
         return userRepository.findById(id)
-            .orElseThrow(() -> new NotFoundException("Not found"));
+            .orElseThrow(() -> new UserNotFoundException(id));
     }
 
     @PostMapping("api/users")
@@ -46,6 +47,7 @@ public class UserController {
             .map(user -> {
                 user.setEmail(newUser.getEmail());
                 user.setName(newUser.getName());
+                user.setPassword(newUser.getPassword());
                 return userRepository.save(user);
             })
             .orElseGet(() -> {
