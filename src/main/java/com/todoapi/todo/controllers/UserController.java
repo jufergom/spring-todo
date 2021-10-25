@@ -45,7 +45,6 @@ public class UserController {
             .map(user -> {
                 user.setEmail(newUser.getEmail());
                 user.setName(newUser.getName());
-                user.setPassword(newUser.getPassword());
                 return userRepository.save(user);
             })
             .orElseGet(() -> {
